@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseApp"
+        android:name=".MyApplication"
         android:usesCleartextTraffic="true">
         <activity
             android:screenOrientation="portrait"
-            android:name=".MainActivity"
+            android:name=".ui.SingleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
