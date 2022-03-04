@@ -16,6 +16,7 @@ fun <T> LiveData<T>.observeThis(owner: LifecycleOwner, function: (T) -> Unit) {
     }
 }
 
+
 fun View.visibleIf(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }

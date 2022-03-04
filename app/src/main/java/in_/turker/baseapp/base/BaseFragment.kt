@@ -39,6 +39,9 @@ abstract class BaseFragment<BindingType : ViewBinding, ViewModelType : BaseViewM
         viewModel.navigateFragmentDetection.observeThis(viewLifecycleOwner) {
             baseActivity?.navigateFragment(it)
         }
+        viewModel.loadingDetection.observeThis(viewLifecycleOwner) {
+            baseActivity?.showHideProgress(it)
+        }
     }
 
 }

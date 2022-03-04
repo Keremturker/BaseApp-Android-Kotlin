@@ -10,6 +10,7 @@ import in_.turker.baseapp.R
 import in_.turker.baseapp.base.BaseActivity
 import in_.turker.baseapp.databinding.ActivitySingleBinding
 import in_.turker.baseapp.utils.NavigateFragmentParams
+import in_.turker.baseapp.utils.visibleIf
 
 @AndroidEntryPoint
 class SingleActivity : BaseActivity<ActivitySingleBinding, SingleVM>(){
@@ -38,6 +39,11 @@ class SingleActivity : BaseActivity<ActivitySingleBinding, SingleVM>(){
             params.navOptions,
             params.extras
         )
+    }
+
+    override fun showHideProgress(isShow: Boolean) {
+        binding.pbLoading.visibleIf(isShow)
+
     }
 
 }

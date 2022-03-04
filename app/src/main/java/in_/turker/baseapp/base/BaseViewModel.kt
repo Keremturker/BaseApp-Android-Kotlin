@@ -19,7 +19,10 @@ open class BaseViewModel
 @Inject constructor(
     app: Application
 ) : AndroidViewModel(app) {
+
     val navigateFragmentDetection by lazy { SingleLiveEvent<NavigateFragmentParams>() }
+    val loadingDetection by lazy { SingleLiveEvent<Boolean>() }
+
 
     fun navigateFragment(
         navAction: Int,
