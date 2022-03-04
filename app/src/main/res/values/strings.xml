@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Base App</string>
-    <string name="page_one">Page One</string>
-    <string name="page_two">Page Two</string>
+    <string name="no_records_found">No records found</string>
+
 </resources>

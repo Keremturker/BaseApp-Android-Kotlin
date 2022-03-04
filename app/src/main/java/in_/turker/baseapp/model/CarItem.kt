@@ -2,6 +2,7 @@ package in_.turker.baseapp.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /**
  * Created by Kerem TÜRKER on 4.03.2022.
@@ -24,4 +25,4 @@ data class CarItem(
     val plate: String,
     @SerializedName("Price")
     val price: String
-)
+):Serializable

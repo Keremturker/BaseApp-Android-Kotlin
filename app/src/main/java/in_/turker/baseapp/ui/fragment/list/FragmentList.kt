@@ -1,12 +1,13 @@
 package in_.turker.baseapp.ui.fragment.list
 
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import in_.turker.baseapp.base.BaseFragment
 import in_.turker.baseapp.databinding.FragmentListBinding
+import in_.turker.baseapp.model.CarItem
 import in_.turker.baseapp.utils.ApiState
+import in_.turker.baseapp.utils.visibleIf
 import kotlinx.coroutines.flow.collect
 
 /**
@@ -19,13 +20,15 @@ class FragmentList : BaseFragment<FragmentListBinding, ListVM>() {
 
     override fun getViewBinding() = FragmentListBinding.inflate(layoutInflater)
 
+    private val carListAdapter = CarListAdapter(::onClickAction)
 
-    override fun onFragmentCreated() {}
-
+    override fun onFragmentCreated() {
+        binding.rvCar.adapter = carListAdapter
+    }
 
     override fun observe() {
 
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launchWhenResumed {
 
             viewModel.onCarList.collect {
                 when (it) {
@@ -35,13 +38,26 @@ class FragmentList : BaseFragment<FragmentListBinding, ListVM>() {
                         viewModel.loadingDetection.postValue(true)
                     }
 
-                    is ApiState.Failure -> {}
+                    is ApiState.Failure -> {
+                        binding.apply {
+                            rvCar.visibleIf(false)
+                            txtNoRecord.visibleIf(true)
+                        }
+                    }
+
                     is ApiState.Success -> {
-                        Log.d("test123", "Success")
-                        Log.d("test123", "size: " + it.data?.size)
+                        binding.apply {
+                            txtNoRecord.visibleIf(false)
+                            rvCar.visibleIf(true)
+                        }
+                        carListAdapter.replaceData(it.data)
                     }
                 }
             }
         }
+    }
+
+    private fun onClickAction(car: CarItem) {
+        viewModel.goToDetail(car)
     }
 }

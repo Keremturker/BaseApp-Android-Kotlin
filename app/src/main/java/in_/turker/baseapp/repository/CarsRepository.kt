@@ -19,7 +19,7 @@ constructor(private val apiServiceImpl: APIClientImpl) : BaseRepository() {
     ) =
         sendRequest(
             scope = scope,
-            client = apiServiceImpl.apiCollect.getCars(),
+            client = { apiServiceImpl.apiCollect.getCars() },
             onSuccess = {
                 onSuccess(it)
             },
@@ -27,5 +27,4 @@ constructor(private val apiServiceImpl: APIClientImpl) : BaseRepository() {
                 onErrorAction(it)
             }
         )
-
 }

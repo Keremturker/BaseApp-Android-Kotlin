@@ -17,7 +17,7 @@ open class BaseRepository {
 
     fun <T> sendRequest(
         scope: CoroutineScope,
-        client: T,
+        client: suspend () -> T,
         onErrorAction: ((String?) -> Unit)?,
         onSuccess: ((T) -> Unit),
     ) {
@@ -26,7 +26,7 @@ open class BaseRepository {
 
     private fun <T> makeAPIRequest(
         scope: CoroutineScope,
-        client: T,
+        client: suspend () -> T,
         onSuccess: ((T) -> Unit)? = null,
         onErrorAction: ((String?) -> Unit)? = null
     ) {
@@ -39,7 +39,7 @@ open class BaseRepository {
                 request.catch { e ->
                     onErrorAction?.invoke(e.message)
                 }.collect {
-                    onSuccess?.invoke(it)
+                    onSuccess?.invoke(it.invoke())
                 }
 
             } catch (e: Exception) {

@@ -1,8 +1,10 @@
 package in_.turker.baseapp.ui.fragment.list
 
 import android.app.Application
+import android.os.Bundle
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import in_.turker.baseapp.R
 import in_.turker.baseapp.base.BaseViewModel
 import in_.turker.baseapp.model.CarItem
 import in_.turker.baseapp.repository.CarsRepository
@@ -22,14 +24,12 @@ class ListVM @Inject constructor(
     private val carsRepository: CarsRepository
 ) : BaseViewModel(app = myApp) {
 
+    private val _onCarList = MutableStateFlow<ApiState<List<CarItem>?>>(ApiState.Empty)
+    val onCarList: StateFlow<ApiState<List<CarItem>?>> = _onCarList
+
     init {
         getCars()
     }
-
-    private val _onCarList =
-        MutableStateFlow<ApiState<List<CarItem>?>>(ApiState.Empty)
-    val onCarList: StateFlow<ApiState<List<CarItem>?>> = _onCarList
-
 
     private fun getCars() = viewModelScope.launch {
         _onCarList.value = ApiState.Loading
@@ -42,5 +42,12 @@ class ListVM @Inject constructor(
                 loadingDetection.postValue(false)
                 _onCarList.value = ApiState.Failure(it)
             })
+    }
+
+    fun goToDetail(car: CarItem) {
+        Bundle().apply {
+            putSerializable("car", car)
+            navigateFragment(R.id.action_global_fragmentDetail, this)
+        }
     }
 }
