@@ -9,6 +9,7 @@ import in_.turker.baseapp.base.BaseViewModel
 import in_.turker.baseapp.model.CarItem
 import in_.turker.baseapp.repository.CarsRepository
 import in_.turker.baseapp.utils.ApiState
+import in_.turker.baseapp.utils.CAR_ITEM
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -46,7 +47,7 @@ class ListVM @Inject constructor(
 
     fun goToDetail(car: CarItem) {
         Bundle().apply {
-            putSerializable("car", car)
+            putSerializable(CAR_ITEM, car)
             navigateFragment(R.id.action_global_fragmentDetail, this)
         }
     }

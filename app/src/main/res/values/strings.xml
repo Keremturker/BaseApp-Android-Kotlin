@@ -2,4 +2,12 @@
     <string name="app_name">Base App</string>
     <string name="no_records_found">No records found</string>
 
+    <string name="brand">Brand:</string>
+    <string name="model">Model:</string>
+    <string name="year">Year:</string>
+    <string name="plate">Plate:</string>
+    <string name="price">Price:</string>
+
+    <string name="price_value">%1$s TL</string>
+
 </resources>

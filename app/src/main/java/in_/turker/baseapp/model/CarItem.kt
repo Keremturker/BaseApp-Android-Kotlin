@@ -11,10 +11,6 @@ import java.io.Serializable
 data class CarItem(
     @SerializedName("BrandName")
     val brandName: String,
-    @SerializedName("FuelTypeName")
-    val fuelTypeName: String,
-    @SerializedName("Kilometer")
-    val kilometer: String,
     @SerializedName("MediumImageUrl")
     val mediumImageUrl: String,
     @SerializedName("ModelName")
@@ -25,4 +21,4 @@ data class CarItem(
     val plate: String,
     @SerializedName("Price")
     val price: String
-):Serializable
+) : Serializable

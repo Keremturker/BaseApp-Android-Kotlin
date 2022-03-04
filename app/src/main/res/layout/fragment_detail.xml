@@ -1,17 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/page_two"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/space_small"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/space_small"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintDimensionRatio="720:405"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgCar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtBrandTitle"
+        style="@style/TextView.Title"
+        android:layout_marginStart="@dimen/space_small_3"
+        android:layout_marginTop="@dimen/space_large"
+        android:text="@string/brand"
+        app:layout_constraintStart_toStartOf="@id/cvImage"
+        app:layout_constraintTop_toBottomOf="@id/cvImage" />
+
+    <TextView
+        android:id="@+id/txtBrandContent"
+        style="@style/TextView.Content"
+        android:layout_marginStart="@dimen/space_small_3"
+        android:layout_marginTop="@dimen/space_large"
+        app:layout_constraintStart_toEndOf="@+id/txtBrandTitle"
+        app:layout_constraintTop_toBottomOf="@id/cvImage"
+        tools:text="Mercedes" />
+
+
+    <TextView
+        android:id="@+id/txtModelTitle"
+        style="@style/TextView.Title"
+        android:text="@string/model"
+        app:layout_constraintStart_toStartOf="@id/txtBrandTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtBrandTitle" />
+
+    <TextView
+        android:id="@+id/txtModelContent"
+        style="@style/TextView.Content"
+        android:layout_marginStart="@dimen/space_small_3"
+        app:layout_constraintStart_toEndOf="@+id/txtModelTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtBrandTitle"
+        tools:text="E320" />
+
+
+    <TextView
+        android:id="@+id/txtYearTitle"
+        style="@style/TextView.Title"
+        android:text="@string/year"
+        app:layout_constraintStart_toStartOf="@id/txtModelTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtModelTitle" />
+
+    <TextView
+        android:id="@+id/txtYearContent"
+        style="@style/TextView.Content"
+        android:layout_marginStart="@dimen/space_small_3"
+        app:layout_constraintStart_toEndOf="@+id/txtYearTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtModelTitle"
+        tools:text="2005" />
+
+
+    <TextView
+        android:id="@+id/txtPlateTitle"
+        style="@style/TextView.Title"
+        android:text="@string/plate"
+        app:layout_constraintStart_toStartOf="@id/txtYearTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtYearTitle" />
+
+    <TextView
+        android:id="@+id/txtPlateContent"
+        style="@style/TextView.Content"
+        android:layout_marginStart="@dimen/space_small_3"
+        app:layout_constraintStart_toEndOf="@+id/txtPlateTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtYearTitle"
+        tools:text="41KT061" />
+
+    <TextView
+        android:id="@+id/txtPriceTitle"
+        style="@style/TextView.Title"
+        android:text="@string/price"
+        app:layout_constraintStart_toStartOf="@id/txtPlateTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtPlateTitle" />
+
+    <TextView
+        android:id="@+id/txtPriceContent"
+        style="@style/TextView.Content"
+        android:layout_marginStart="@dimen/space_small_3"
+        app:layout_constraintStart_toEndOf="@+id/txtPriceTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtPlateTitle"
+        tools:text="250.000 TL" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
