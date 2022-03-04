@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.SingleActivity"
+            android:name=".ui.activity.SingleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

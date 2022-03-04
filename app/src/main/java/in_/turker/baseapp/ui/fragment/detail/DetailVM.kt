@@ -1,4 +1,4 @@
-package in_.turker.baseapp.ui
+package in_.turker.baseapp.ui.fragment.detail
 
 import android.app.Application
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,5 +10,6 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class SingleVM
-@Inject constructor(myApp: Application) : BaseViewModel(app = myApp)
+class DetailVM @Inject constructor(
+    myApp: Application
+) : BaseViewModel(app = myApp)

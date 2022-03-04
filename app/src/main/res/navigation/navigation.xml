@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragmentList">
+
+    <fragment
+        android:id="@+id/fragmentList"
+        android:name="in_.turker.baseapp.ui.fragment.list.FragmentList"
+        android:label="FragmentList"
+        tools:layout="@layout/fragment_list" />
+
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="in_.turker.baseapp.ui.fragment.detail.FragmentDetail"
+        android:label="FragmentDetail"
+        tools:layout="@layout/fragment_detail" />
+
+    <action
+        android:id="@+id/action_global_fragmentDetail"
+        app:destination="@id/fragmentDetail" />
+
+</navigation>
